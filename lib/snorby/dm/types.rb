@@ -23,7 +23,7 @@ module DataMapper
               Object   => { :primitive => 'MEDIUMTEXT'},
               DateTime => { :primitive => 'DATETIME'  },
               Time     => { :primitive => 'DATETIME'  },
-			  ::Snorby::Model::Types::NumericIPAddr => { :primitive => 'VARBINARY(16)' },
+			  ::Snorby::Model::Types::NumericIPAddr => { :primitive => 'DECIMAL(39)' },
             ).freeze
           end
       end      
