@@ -22,14 +22,19 @@ module Snorby
   module Model
     module Types
       
-      class NumericIPAddr < DataMapper::Property::Integer
+      class NumericIPAddr < DataMapper::Property::Object  # < DataMapper::Property::Integer
 
         def load(ip)
           case ip
           when nil, 0
             nil
           else
-            ::IPAddr.new(ip,Socket::AF_INET)
+	            if ip.to_i > 4294967295	# 4294967295 == IPAddr.new("255.255.255.255").to_i
+										# Everything that's greater must be IPv6. Yes, dirty.
+					::IPAddr.new(ip,Socket::AF_INET6)
+				else
+					::IPAddr.new(ip,Socket::AF_INET)
+				end
           end
         end
 
