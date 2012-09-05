@@ -10,10 +10,10 @@ class Ip
   
   property :cid, Integer, :key => true, :index => true
 
-  property :ip_src, NumericIPAddr, :index => true, :min => 0, 
+  property :ip_src, NumericIPAddr, :index => true, 
            :required => true, :default => 0
   
-  property :ip_dst, NumericIPAddr, :index => true, :min => 0, 
+  property :ip_dst, NumericIPAddr, :index => true,
            :required => true, :default => 0
   
   property :ip_ver, Integer, :lazy => true, :min => 0, :required => true, 
