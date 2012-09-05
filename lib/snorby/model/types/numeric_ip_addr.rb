@@ -31,9 +31,9 @@ module Snorby
           else
 	            if ip.to_i > 4294967295	# 4294967295 == IPAddr.new("255.255.255.255").to_i
 										# Everything that's greater must be IPv6. Yes, dirty.
-					::IPAddr.new(ip,Socket::AF_INET6)
+					::IPAddr.new(ip.to_i,Socket::AF_INET6)
 				else
-					::IPAddr.new(ip,Socket::AF_INET)
+					::IPAddr.new(ip.to_i,Socket::AF_INET)
 				end
           end
         end
